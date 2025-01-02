@@ -30,3 +30,4 @@ export const handleAnimateNext = (
     setFunc({ opacity: 0, x: -100 });
     nav(to, { state: { pageStatus: "next" } });
 }
+

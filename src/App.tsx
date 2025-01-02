@@ -8,10 +8,13 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import store, { persistor } from "./store/store";
 import { Login } from "./pages/login/login";
 import { HeaderFooter } from "./component/HeaderFooter/HeaderFooter";
+import { Home } from "./pages/home/home";
+import { useIsMobile } from "./controller/hookCustom";
 
 const queryClient = new QueryClient();
 
 function App() {
+  const isMobile = useIsMobile();
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
@@ -23,8 +26,17 @@ function App() {
               <Route path="/findpw/user" element={<FindAccount />} />, */}
             </Route>
             <Route element={<HeaderFooter />}>
-              <Route path="/home" element={<div>home</div>} />,
-              {/* <Route path="/home" element={<Home />} />, */}
+              <Route
+                path="/home"
+                element={
+                  <Home
+                    test={
+                      isMobile ? "모바일 환경입니다" : "데스크탑 환경입니다."
+                    }
+                  />
+                }
+              />
+              ,{/* <Route path="/home" element={<Home />} />, */}
               {/* <Route path="/home/graph" element={<Graph />} />,
               <Route path="/home/ward" element={<Ward />} />, */}
             </Route>
