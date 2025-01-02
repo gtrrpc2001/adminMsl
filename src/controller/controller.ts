@@ -1,4 +1,14 @@
 import { NavigateFunction, To } from "react-router-dom";
+import axios from "axios";
+
+export const createAxios = (url: string) => {
+    return axios.create({
+        baseURL: url,
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+}
 
 export const setInitialParams = (pageStatus: string) => {
     switch (pageStatus) {
