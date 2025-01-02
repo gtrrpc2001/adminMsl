@@ -1,0 +1,118 @@
+.background {
+  background-image: url("../../assets/image/KakaoTalk_20231012_172515024.png");
+  background-color: #d9d7e0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageSelector {
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.Grid-Container {
+  padding-top: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+@mixin GridRow-Base {
+  display: flex;
+  align-items: center;
+}
+
+.GridItem-center {
+  @include GridRow-Base;
+  justify-content: center;
+}
+
+.GridRow-center {
+  @include GridRow-Base;
+  padding-top: 10px;
+  justify-content: center;
+}
+
+.linkWraper {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.logininput {
+  width: 100%;
+
+  &.MuiTextField-root {
+    background-color: #ffffff;
+  }
+  &.MuiTextField-root:hover {
+    background-color: #f0f0f0f0;
+  }
+}
+
+.loginButtonWraper {
+  margin-bottom: 5px;
+  padding-top: 18px;
+  padding-bottom: 25px;
+}
+
+.loginButton {
+  &.MuiButton-root {
+    width: 200px;
+    height: 35px;
+  }
+}
+
+.titleWraper {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.iconWraper {
+  display: flex;
+}
+
+.lookheartText {
+  &.MuiTypography-root {
+    font-size: 35px;
+    font-weight: 500;
+    color: #33afe4;
+  }
+}
+
+.loginPaper {
+  width: 25%;
+  min-width: 300px;
+}
+
+.SignInWraper {
+  width: 100%;
+}
+
+.UserTypeSelect {
+  &.MuiButtonBase-root {
+    width: 100px;
+    height: 30px;
+
+    &.Mui-selected {
+      background-color: #33afe4;
+      color: white;
+    }
+  }
+}
+
+.MuiTabs-indicator {
+  &.css-1aquho2-MuiTabs-indicator {
+    background-color: #33afe4;
+  }
+}
+
+.loginform {
+  width: 100%;
+}

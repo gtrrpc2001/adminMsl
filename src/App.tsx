@@ -1,34 +1,41 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./App.css";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { MainFrame } from "./component/login/frame";
+import { Navigate, Route, Routes } from "react-router-dom";
+import store, { persistor } from "./store/store";
+import { Login } from "./pages/login/login";
+import { HeaderFooter } from "./component/HeaderFooter/HeaderFooter";
+
+const queryClient = new QueryClient();
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>MSL ADMIN</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          testing <code>App To CloudType CI/CD Success</code>
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Routes>
+            <Route element={<MainFrame />}>
+              <Route path="/" element={<Login />} />,
+              {/* <Route path="/signup/user" element={<UserSignUp />} />,
+              <Route path="/findpw/user" element={<FindAccount />} />, */}
+            </Route>
+            <Route element={<HeaderFooter />}>
+              <Route path="/home" element={<div>home</div>} />,
+              {/* <Route path="/home" element={<Home />} />, */}
+              {/* <Route path="/home/graph" element={<Graph />} />,
+              <Route path="/home/ward" element={<Ward />} />, */}
+            </Route>
+            <Route path="*" element={<Navigate to={"/"} replace={true} />} />,
+          </Routes>
+        </PersistGate>
+      </Provider>
+      {import.meta.env.VITE_API_NODE_ENV === "development" && (
+        <ReactQueryDevtools initialIsOpen={false} />
+      )}
+    </QueryClientProvider>
   );
 }
 

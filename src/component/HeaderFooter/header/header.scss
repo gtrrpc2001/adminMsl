@@ -1,0 +1,181 @@
+@mixin tool {
+  text-align: center;
+  width: 120px;
+  padding-left: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 35px;
+  font-weight: 900;
+  color: #313d53;
+  text-transform: none;
+  letter-spacing: -0.075rem;
+}
+
+@mixin content-center {
+  margin-top: 5px;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+}
+
+@mixin toolHover {
+  background-color: #e9e6e6;
+}
+
+.headerwrap {
+  display: flex;
+  width: 100%;
+  height: 3.5rem;
+  padding: 0 3%;
+  position: relative;
+}
+
+.toolbar {
+  justify-content: start;
+  margin-right: 5%;
+  @include tool;
+}
+
+.toolbar:hover {
+  @include toolHover;
+}
+
+.center {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.graph {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 5px;
+
+  .appBarText {
+    &.MuiTypography-root {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.listWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.ward {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 5px;
+
+  .appBarText {
+    &.MuiTypography-root {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.headerTitleDiv {
+  display: flex;
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+
+.headerTitle {
+  flex-grow: 1;
+
+  &.MuiTypography-root {
+    color: #33afe4;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.headerContents {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 50px;
+}
+
+.logoutbuttonDiv {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+  bottom: 0;
+}
+
+.logoutbutton {
+  &.MuiButtonBase-root {
+    color: #33afe4;
+    outline: white;
+  }
+}
+
+.logOutText {
+  &.MuiTypography-root {
+    padding-left: 5px;
+  }
+}
+
+.AppDrawer {
+  .MuiDrawer-paper {
+    width: 175px;
+    box-sizing: "border-box";
+  }
+}
+
+.mainPage {
+  display: flex;
+  flex-direction: column;
+  float: right;
+
+  flex-grow: 1;
+  width: 100%;
+  transition: width 0.3s ease-in-out;
+
+  &.open {
+    width: calc(100% - 175px);
+  }
+}
+
+.drawerButtonWrapper {
+  z-index: 1200;
+  position: fixed;
+  top: 50%;
+  transform: translateX(-50%);
+
+  .drawerButton {
+    &.MuiButtonBase-root {
+      padding: 0;
+      border-right: 1px solid #c1c1c1;
+      background-color: #ffffff;
+      border-radius: 100%;
+    }
+
+    .left {
+      width: 50px;
+      height: 50px;
+    }
+
+    .right {
+      transform: translateX(+20%);
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+
+.menuList {
+  height: 100%;
+}
