@@ -2,30 +2,21 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
+import { registerSW } from "virtual:pwa-register";
+
+registerSW({
+  immediate: true, // 즉시 등록
+  onNeedRefresh() {
+    console.log("새로운 버전이 있습니다. 페이지를 새로 고침하세요.");
+    // 사용자에게 새로 고침을 요청할 수 있는 로직 추가 가능
+  },
+  onOfflineReady() {
+    console.log("오프라인 모드 준비 완료.");
+  },
+});
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter basename="/">
     <App />
   </BrowserRouter>
 );
-
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/sw.js").then((registration) => {
-    registration.onupdatefound = () => {
-      const installingWorker: any = registration.installing;
-      installingWorker.onstatechange = () => {
-        if (installingWorker.state === "installed") {
-          if (navigator.serviceWorker.controller) {
-            // 새로운 버전이 설치되었음을 알림
-            console.log(
-              "새로운 업데이트가 있습니다. 앱을 새로 고치시겠습니다."
-            );
-
-            // 자동으로 새로 고침
-            window.location.reload(); // 새로 고침
-          }
-        }
-      };
-    };
-  });
-}

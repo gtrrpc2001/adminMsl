@@ -31,7 +31,15 @@ export default defineConfig({
         theme_color: '#ffffff',
       },
       registerType: 'autoUpdate',
-      filename: 'sw.js'
+      injectRegister: 'auto',
+      filename: 'sw.js',
+      devOptions: {
+        enabled: true,
+        type: 'module',
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+      }
     })
   ],
   server: {
