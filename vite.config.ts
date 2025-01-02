@@ -31,6 +31,7 @@ export default defineConfig({
         theme_color: '#ffffff',
       },
       registerType: 'autoUpdate',
+      filename: 'sw.js'
     })
   ],
   server: {
