@@ -22,7 +22,7 @@ function App() {
           count is {count}
         </button>
         <p>
-          testing <code>App CI/CD Success</code>
+          testing <code>App To CloudType CI/CD Success</code>
         </p>
       </div>
       <p className="read-the-docs">
