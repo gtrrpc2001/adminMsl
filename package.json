@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
+    "start": "pnpm build && pnpm serve dist",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -27,6 +28,9 @@
     "react-router-dom": "^7.1.1",
     "redux-persist": "^6.0.0",
     "sass": "^1.83.0",
+    "serve": "^14.2.4",
+    "terser": "^5.37.0",
+    "vite-plugin-javascript-obfuscator": "^3.1.0",
     "workbox-window": "^7.3.0"
   },
   "devDependencies": {

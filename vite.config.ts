@@ -1,12 +1,26 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa';
+import javascriptObfuscator from 'vite-plugin-javascript-obfuscator';
 
 // https://vite.dev/config/
 export default defineConfig({
+  build: {
+    sourcemap: false,
+    minify: 'terser'
+  },
   plugins: [
     react(),
-
+    javascriptObfuscator({
+      include: [/\.jsx?$/, /\.tsx?$/],
+      exclude: [/node_modules/, /\.nuxt/],
+      options: {
+        compact: true,
+        controlFlowFlattening: true,
+      },
+      debugger: true,
+      apply: 'build',
+    }),
     VitePWA({
       manifest: {
         name: 'adminMsl',
