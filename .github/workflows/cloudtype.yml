@@ -25,7 +25,7 @@ jobs:
             app: web
             options:
               nodeversion: "22"
-              build: pnpm build --silent;
+              build: pnpm build;
               spa: true
               install: npm install -g pnpm; pnpm install;
               buildenv: []
